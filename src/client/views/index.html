@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Journal App</title>
+  <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="https://uxwing.com/wp-content/themes/uxwing/download/27-weather/weather.png" type="image/x-icon">
+</head>
+
+<body>
+  <div id="app">
+    <header class="holder headline">
+      <img src="https://uxwing.com/wp-content/themes/uxwing/download/27-weather/weather.png" alt="Weather App Icon">
+      <span>Weather Journal App</span>
+    </header>
+    <div class="holder zip">
+      <label for="zip">Enter Zip code*</label>
+      <input type="text" id="zip" placeholder="Enter zip code here">
+    </div>
+    <div class="holder feel">
+      <label for="feelings">How are you feeling today?</label>
+      <textarea class="myInput" id="feelings" placeholder="Enter your feelings here"></textarea>
+    </div>
+    <div class="holder">
+      <button id="generate" type="submit"> Generate </button>
+    </div>
+    <div class="holder entry" id="retrievedData">
+      <div class="title"></div>
+      <div id="entryHolder">
+        <div id="date"></div>
+        <div id="temp"></div>
+        <div id="content"></div>
+      </div>
+    </div>
+    <div class="holder entry" id="dataPlaceholder"></div>
+  </div>
+</body>
+</html>
