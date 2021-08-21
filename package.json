@@ -9,7 +9,7 @@
     "dev": "webpack-dev-server --config webpack.dev.js --open"
   },
   "keywords": [],
-  "author": "",
+  "author": "MohamedElshowel",
   "license": "ISC",
   "description": "",
   "dependencies": {
