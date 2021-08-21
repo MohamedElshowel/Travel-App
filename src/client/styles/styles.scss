@@ -1,121 +1,20 @@
 /* CSS variables */
+$font-family: "Oswald", sans-serif;
 $header-shadow: 0.05em 0.05em 0.05em rgba(59, 74, 107, 0.5);
-$input-text-color: #f0d43a;
+$input-background: #22b2da;
+$input-text-color: #d8ff33;
 $label-text-color: #fff;
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-#app {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: auto auto 50% 12%;
-  grid-template-columns: 40% 30%;
-  grid-column-gap: 10%;
-  height: 85vh;
-  background-image: linear-gradient(
-    -45deg,
-    #9fb8ad 0%,
-    #1fc8db 51%,
-    #2cb5e8 75%
-  );
-  color: #fff;
-  justify-content: center;
-  grid-gap: 1em;
-  font-size: 20px;
-  font-family: "Oswald", sans-serif;
-  padding-bottom: 15vh;
-}
-
-.headline {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  margin-top: 2%;
-  font-size: 2em;
-  text-shadow: $header-shadow;
-}
-
-.headline img {
-  height: 1.5em;
-  vertical-align: middle;
-  filter: drop-shadow($header-shadow);
-}
-
-.entry {
-  background: rgba(59, 74, 107, 0.4);
-  grid-column-start: 2;
-  grid-row-start: 2;
-  grid-row-end: 5;
-}
-
-#retrievedData {
-  display: none;
-}
-
-#dataPlaceholder {
-  background: url('../images/weather-icon.png') no-repeat;
-  background-size: 100%;
-  filter: blur(2px) grayscale(0.8) opacity(0.4);
-}
-
-#entryHolder {
-  margin-left: 10%;
-}
-
-.title {
-  text-align: center;
-  color: $input-text-color;
-  font-size: 1.1em;
-  margin: 1em;
-}
-
-/*  Basic Styling To Override Default For Basic HTML Elements */
-label {
-  display: block;
-  color: $label-text-color;
-  font-size: 1.2em;
-}
-
-input {
-  display: block;
-  height: 3em;
-  width: 70%;
-  background: #22b2da;
-  color: $input-text-color;
-  font-size: 20px;
-  font-family: "Oswald", sans-serif;
-  border: none;
-}
-
-button {
-  width: 70%;
-  height: 2.5em;
-  background: #3b4a6b;
-  color: #fff;
-  font-size: 26px;
-  font-family: "Oswald", sans-serif;
-  border: none;
-  box-shadow: 2px 4px 5px #444;
-  cursor: pointer;
-}
-
-button:hover {
-  color: #f0d43a;
-}
-
-textarea {
-  background: #22b2da;
-  color: #f0d43a;
-  font-size: 20px;
-  font-family: "Oswald", sans-serif;
-  width: 70%;
-  height: calc(100% - 2em);
-  border-radius: 2px;
-  border: none;
-}
+$header-background-gradient: linear-gradient(
+  180deg,
+  rgba(59, 74, 107, 0.6) 0%,
+  transparent 100%
+);
+$background-gradient: linear-gradient(
+  -45deg,
+  #92b3ce 0%,
+  #1fc8db 51%,
+  #2cb5e8 75%
+);
 
 /* Reset style for HTML element on active to have no border*/
 input:focus,
@@ -125,24 +24,113 @@ button:focus {
   outline: none;
 }
 
-/* Style for Placeholder Text*/
-::placeholder {
-  /* Firefox, Chrome, Opera */
-  color: $input-text-color;
-  font-family: "Oswald", sans-serif;
-  font-style: italic;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-image: $background-gradient;
 }
 
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: $input-text-color;
-  font-family: "Oswald", sans-serif;
-  font-style: italic;
+header {
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  background-image: $header-background-gradient;
+
+  .app-title {
+    color: $label-text-color;
+    font-family: "Oswald", sans-serif;
+    text-shadow: $header-shadow;
+    font-size: 32px;
+    align-self: center;
+  }
+
+  .app-icon {
+    align-self: center;
+    height: 50px;
+    filter: drop-shadow($header-shadow);
+    margin: 0 1em;
+  }
 }
 
-::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: $input-text-color;
-  font-family: "Oswald", sans-serif;
-  font-style: italic;
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+  margin: 5% auto;
+}
+
+section {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  div {
+    margin: 1em 0;
+    width: 80%;
+  }
+
+  label {
+    color: $label-text-color;
+    font-size: 1.2em;
+    margin-bottom: 2em;
+  }
+
+  input {
+    height: 3em;
+    width: 100%;
+    background: $input-background;
+    color: $input-text-color;
+    font-size: 1.2em;
+    font-family: $font-family;
+    border: none;
+
+    &::placeholder {
+      color: $input-text-color;
+      font-style: italic;
+    }
+  }
+
+  button {
+    width: 100%;
+    height: 2.5em;
+    background: #3b4a6b;
+    color: $label-text-color;
+    font-size: 1.5em;
+    font-family: $font-family;
+    border: none;
+    box-shadow: 2px 4px 5px #444;
+    cursor: pointer;
+
+    &:hover {
+      color: $input-text-color;
+    }
+  }
+}
+
+#dataPlaceholder {
+  background: url("../images/weather-icon.png") no-repeat;
+  background-size: 100%;
+  filter: blur(2px) grayscale(0.8) opacity(0.4);
+  height: 300px;
+  width: 300px;
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    flex-direction: column;
+  }
+  section {
+    width: 100%;
+
+    div {
+      margin: 1.5em auto;
+    }
+  }
 }

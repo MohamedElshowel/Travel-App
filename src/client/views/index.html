@@ -5,36 +5,51 @@
   <meta charset="UTF-8">
   <title>Travel Planner</title>
   <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="src/client/images/weather-icon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="src/client/images/travel.png" type="image/x-icon">
 </head>
 
 <body>
-  <div id="app">
-    <header class="holder headline">
-      <img src="src/client/images/weather-icon.png" alt="Weather App Icon">
-      <span>Travel Planner</span>
-    </header>
-    <div class="holder location">
-      <label for="location">Enter Location Name *</label>
-      <input type="text" id="location" placeholder="ex: Paris, France">
-    </div>
-    <div class="holder date">
-      <label for="date">Enter Departure Date *</label>
-      <input type="text" id="date" placeholder="Departure Date">
-    </div>
-    <div class="holder">
-      <button id="generate" type="submit"> Generate </button>
-    </div>
-    <div class="holder entry" id="retrievedData">
-      <div class="title"></div>
-      <div id="entryHolder">
-        <div id="date"></div>
-        <div id="temp"></div>
-        <div id="content"></div>
+  <header>
+    <img class="app-icon" src="src/client/images/travel.png" alt="Weather App Icon">
+    <h1 class="app-title">Travel Planner</h1>
+  </header>
+
+  <main id="app">
+    <section>
+      <div class="entry location">
+        <label for="location">Your Destination *</label>
+        <input type="text" id="location" placeholder="ex: Berlin, Germany" title="Enter your destination">
       </div>
-    </div>
-    <div class="holder entry" id="dataPlaceholder"></div>
-  </div>
+      <div class="entry date">
+        <label for="datePicker">Departure Date *</label>
+        <input type="date" id="datePicker" placeholder="Departure Date" title="Pick your departure date">
+      </div>
+      <div>
+        <button id="generate" title="Get Weather Forecast" type="submit">Get Weather Forecast</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="holder entry" id="dataPlaceholder"></div>
+      <div class="holder entry" id="retrievedData">
+        <div class="title"></div>
+        <div id="entryHolder">
+          <div id="date"></div>
+          <div id="temp"></div>
+          <div id="content"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    // // Check that service workers are supported
+    // if ('serviceWorker' in navigator) {
+    //   // Use the window load event to keep the page load performant
+    //   window.addEventListener('load', () => {
+    //     navigator.serviceWorker.register('/service-worker.js');
+    //   });
+    // }
+  </script>
 </body>
 
 </html>
