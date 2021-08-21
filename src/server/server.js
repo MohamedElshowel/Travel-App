@@ -34,11 +34,17 @@ app.get('/getData', async (req, res) => {
   // buildServiceWorker();
 
   try {
-    const response = await fetch(`http://api.geonames.org/postalCodeSearchJSON?placename=${req.query.location}&maxRows=${1}&username=${process.env.GEONAMES_USERNAME || 'demo'}`);
+    const response = await fetch(`http://api.geonames.org/postalCodeSearchJSON?placename=${req.query.city}&maxRows=${1}&username=${process.env.GEONAMES_USERNAME || 'demo'}`);
     const responseObj = await response.json();
     if (responseObj.postalCodes.length) {
-      const weatherForecast = await getWeatherForecast(responseObj.postalCodes[0]);
-      const locationImage = await getLocationImage(responseObj.postalCodes[0].placeName || req.query.location);
+      const weatherParams = { days: req.query.days };
+      if (responseObj.postalCodes[0]) {
+        weatherParams.locationData = responseObj.postalCodes[0];
+      } else {
+        weatherParams.cityName = req.query.city;
+      }
+      const weatherForecast = await getWeatherForecast(weatherParams);
+      const locationImage = await getLocationImage(responseObj.postalCodes[0].placeName || req.query.city);
 
       res.send({
         weather: weatherForecast,
@@ -46,12 +52,14 @@ app.get('/getData', async (req, res) => {
       });
     }
   } catch (error) {
+    res.send({ error });
     console.log('error', error);
   }
 });
 
-const getWeatherForecast = async (locationData) => {
-  const response = await fetch(`http://api.weatherbit.io/v2.0/forecast/daily?lat=${locationData.lat}&lon=${locationData.lng}&key=${process.env.WEATHERBIT_API_KEY}`);
+const getWeatherForecast = async ({ locationData, cityName, days }) => {
+  const locationQuery = locationData ? `lat=${locationData.lat}&lon=${locationData.lng}` : `city=${cityName}`;
+  const response = await fetch(`http://api.weatherbit.io/v2.0/forecast/daily?${locationQuery}&days=${days + 1}&key=${process.env.WEATHERBIT_API_KEY}`);
   const responseObj = await response.json();
   return responseObj;
 }

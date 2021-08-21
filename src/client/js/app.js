@@ -3,12 +3,15 @@
  */
 const generateWeatherJournal = async () => {
     let location = document.getElementById('location')?.value?.replace(/\s+/g, '');
-    // let departureDate = document.getElementById('date').value;
+    let departureDate = document.getElementById('datePicker').value;
+    let daysCount = Math.ceil((Date.parse(departureDate) - new Date()) / (1000 * 60 * 60 * 24));
 
     if (!location) {
-        alert('Please enter a valid city name');
+        alert('Please enter the destination city name');
+    } else if (!departureDate) {
+        alert('Please enter a valid departure date');
     } else {
-        const weatherData = await getWeatherData(`/getData?location=${location}`, true);
+        const weatherData = await getWeatherData(`/getData?city=${location}&days=${daysCount}`, true);
         console.log(weatherData);
     }
 
