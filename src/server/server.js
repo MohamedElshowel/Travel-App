@@ -78,8 +78,3 @@ const getLocationImage = async (locationName) => {
     return null;
   }
 }
-
-export {
-  getWeatherForecast,
-  getLocationImage,
-}
