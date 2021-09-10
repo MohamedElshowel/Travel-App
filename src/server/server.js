@@ -35,7 +35,7 @@ app.listen(8081, () => {
 
 app.get('/getData', async (req, res) => {
 
-  // buildServiceWorker();
+  buildServiceWorker();
 
   try {
     const response = await fetch(`http://api.geonames.org/postalCodeSearchJSON?placename=${req.query.city}&maxRows=${1}&username=${process.env.GEONAMES_USERNAME || 'demo'}`);
