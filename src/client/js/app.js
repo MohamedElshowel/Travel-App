@@ -56,7 +56,8 @@ const displayData = ({ images, weatherData, cityName }) => {
     if (weatherData) {
         const selectedDate = new Date(document.getElementById('datePicker').value).toISOString().slice(0, 10);
         const selectedDayWeather = weatherData.find(day => day.datetime === selectedDate) || weatherData.pop();
-        document.getElementById('weather-title').innerHTML = `The typical weather condition in ${cityName} <br/> on ${selectedDate} is:`;
+        const localDateString = new Date(selectedDate).toLocaleDateString(navigator.language);
+        document.getElementById('weather-title').innerHTML = `The typical weather condition in ${cityName} <br/> on ${localDateString} is:`;
         document.getElementById('weather-temp').innerHTML = `<b>High: </b>${selectedDayWeather.high_temp}°C, &nbsp; <b>Low: </b>${selectedDayWeather.low_temp}°C`;
         document.getElementById('weather-description').innerHTML = `${selectedDayWeather.weather.description} throughout the day.`;
         document.getElementById('weather-icon').style.backgroundImage = `url(https://www.weatherbit.io/static/img/icons/${selectedDayWeather.weather.icon}.png)`;
