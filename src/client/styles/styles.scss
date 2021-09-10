@@ -111,6 +111,13 @@ section {
     &:hover {
       color: $input-text-color;
     }
+
+    &:disabled {
+      background-color: #999999;
+      color: $label-text-color;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
   }
 }
 

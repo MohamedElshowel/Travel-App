@@ -4,6 +4,8 @@
 const generateWeatherJournal = async () => {
     // reset pre-loaded data
     resetPlaceholders();
+    // Start loading state
+    toggleLoadingState(true);
 
     let location = document.getElementById('location')?.value?.replace(/\s+/g, '');
     let departureDate = document.getElementById('datePicker').value;
@@ -21,7 +23,8 @@ const generateWeatherJournal = async () => {
           cityName: allData?.weather?.city_name,
         });
     }
-
+    // Stop loading state
+    toggleLoadingState(false);
 }
 
 /**
@@ -82,6 +85,15 @@ const resetPlaceholders = () => {
     document.getElementById('weather-data').style.display = 'none';
     document.getElementById('location-placeholder').style.display = 'block';
     document.getElementById('location-image').style.display = 'none';
+}
+
+/**
+ * @description Toggle the loading state of the "Get Weather" button.
+ * @param {boolean} isLoading 
+ */
+const toggleLoadingState = (isLoading) => {
+    document.getElementById('generate').style.display = isLoading ? 'none' : 'block';
+    document.getElementById('button-loading').style.display = isLoading ? 'block' : 'none';
 }
 
 export {
