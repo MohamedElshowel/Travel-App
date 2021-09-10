@@ -16,11 +16,11 @@
 
   <main id="app">
     <section>
-      <div class="entry location">
+      <div class="location">
         <label for="location">Your Destination *</label>
         <input type="text" id="location" placeholder="ex: Berlin, Germany" title="Enter your destination">
       </div>
-      <div class="entry date">
+      <div class="date">
         <label for="datePicker">Departure Date *</label>
         <input type="date" id="datePicker" placeholder="Departure Date" title="Pick your departure date">
       </div>
@@ -29,15 +29,19 @@
       </div>
     </section>
 
+    
     <section>
-      <div class="holder entry" id="dataPlaceholder"></div>
-      <div class="holder entry" id="retrievedData">
-        <div class="title"></div>
-        <div id="entryHolder">
-          <div id="date"></div>
-          <div id="temp"></div>
-          <div id="content"></div>
-        </div>
+      <img id="location-placeholder" class="placeholder-image" src="src/client/images/travel-icon.png"/>
+      <img id="location-image" style="display: none;"/>
+    </section>
+    
+    <section>
+      <img id="weather-placeholder" class="placeholder-image" src="src/client/images/weather-icon.png"/>
+      <div id="weather-data" class="weather-data" style="display: none;">
+        <h2 id="weather-title" class="weather-data__title"></h2>
+        <div id="weather-icon" class="weather-data__icon"></div>
+        <div id="weather-temp" class="weather-data__temp"></div>
+        <div id="weather-description" class="weather-data__description"></div>
       </div>
     </section>
   </main>
