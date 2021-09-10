@@ -15,7 +15,6 @@ const generateWeatherJournal = async () => {
         alert('Please enter a valid departure date');
     } else {
         const allData = await getWeatherData(`/getData?city=${location}&days=${daysCount}`, true);
-        console.log(allData);
         displayData({
           images: allData?.image?.hits,
           weatherData: allData?.weather?.data,
